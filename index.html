@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem Bel Sekolah SMUQ - SMA Kristen 1 Salatiga & PPG Informatika UKSW 2026</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- TOP NAVBAR -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand" onclick="App.navigate('dashboard')">
+        <div class="brand-icon">
+          <span class="svg-icon" style="display:inline-flex;width:24px;height:24px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+          </span>
+        </div>
+        <div class="brand-titles">
+          <div class="brand-main">
+            BEL SMUQ <span class="brand-tag">OFFLINE</span>
+          </div>
+          <div class="brand-sub">SMA Kristen 1 Salatiga • PPG UKSW 2026</div>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="#dashboard" class="nav-link active" data-view="dashboard">
+          <span class="svg-icon" style="width:16px;height:16px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg></span>
+          Beranda
+        </a>
+        <a href="#schedules" class="nav-link" data-view="schedules">
+          <span class="svg-icon" style="width:16px;height:16px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+          Jadwal Bel
+        </a>
+        <a href="#manual" class="nav-link" data-view="manual">
+          <span class="svg-icon" style="width:16px;height:16px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></span>
+          Bel Manual
+        </a>
+        <a href="#reduction" class="nav-link" data-view="reduction">
+          <span class="svg-icon" style="width:16px;height:16px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line></svg></span>
+          Pengurangan Jam
+        </a>
+        <a href="#instruments" class="nav-link" data-view="instruments">
+          <span class="svg-icon" style="width:16px;height:16px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg></span>
+          Instrumen
+        </a>
+        <a href="#history" class="nav-link" data-view="history">
+          <span class="svg-icon" style="width:16px;height:16px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3"></path><path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5"></path></svg></span>
+          Riwayat
+        </a>
+      </nav>
+
+      <div class="nav-extra">
+        <button class="btn btn-sm btn-outline" style="color:#ffffff;border-color:rgba(255,255,255,0.3)" onclick="App.lockSession(true)" title="Kunci Sesi Layar">
+          <span class="svg-icon" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span>
+          Kunci Sesi
+        </button>
+        <button class="btn btn-sm btn-outline" style="color:#ffffff;border-color:rgba(255,255,255,0.3)" onclick="App.openChangePasswordModal()" title="Ganti Kata Sandi">
+          <span class="svg-icon" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></span>
+          Ganti Sandi
+        </button>
+        <button class="btn btn-sm btn-outline" style="color:#ffffff;border-color:rgba(255,255,255,0.3)" onclick="App.openBackupModal()" title="Cadangkan atau Pulihkan Data">
+          <span class="svg-icon" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></span>
+          Cadangan / Backup
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- GLOBAL RINGING ALERT BANNER (TOP) -->
+  <div class="global-ringing-banner" id="global-ringing-banner" style="display: none;">
+    <div class="banner-left">
+      <span class="svg-icon ringing-bell-anim" style="width:24px;height:24px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path><path d="M4 4l2 2"></path><path d="M20 4l-2 2"></path></svg>
+      </span>
+      <span id="ringing-banner-text"><strong>BEL SEDANG BERBUNYI:</strong> Jam Pelajaran</span>
+    </div>
+    <button class="btn btn-sm btn-outline" style="background:#ffffff;color:#dc2626;border:none;" onclick="window.audioManager.stop()">
+      <span class="svg-icon" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="5" width="14" height="14" rx="2"></rect></svg></span>
+      Hentikan Suara (Stop)
+    </button>
+  </div>
+
+  <!-- MAIN VIEW CONTENT CONTAINER -->
+  <main class="main-wrapper" id="main-content">
+    <!-- Views injected dynamically via app.js -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-brand">Sistem Bel Sekolah SMUQ © 2026</span> • 
+        <span>SMA Kristen 1 Salatiga</span> • 
+        <span>Kolaborasi Pengembangan PPG Informatika UKSW 2026</span>
+      </div>
+      <div class="footer-right">
+        <span>Status: 100% Standalone Offline • Penyimpanan Harddisk Aman</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- SESSION LOCK OVERLAY (MODAL TERKUNCI DENGAN BLUR BACKGROUND) -->
+  <div class="session-lock-overlay" id="session-lock-overlay" style="display: none;">
+    <div class="session-lock-card">
+      <div class="lock-icon-circle">
+        <span class="svg-icon" style="width:36px;height:36px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        </span>
+      </div>
+      <h2 class="lock-title">SESI TERKUNCI</h2>
+      <p class="lock-desc">Sistem Bel Sekolah SMUQ • SMA Kristen 1 Salatiga</p>
+      
+      <!-- Status Bel Otomatis Indicator -->
+      <div class="lock-status-box">
+        <span>Status Bel Otomatis:</span>
+        <strong id="lock-bell-status-badge" class="badge badge-success">AKTIF (ON)</strong>
+      </div>
+
+      <form id="form-session-lock" onsubmit="App.onUnlockSubmit(event)">
+        <div class="form-group mb-3">
+          <label for="session-lock-password" class="form-label text-left">Masukkan Kata Sandi Petugas:</label>
+          <input type="password" id="session-lock-password" class="form-control text-center" placeholder="Masukkan kata sandi..." autocomplete="off" required>
+          <div id="session-lock-error" class="text-danger small mt-2" style="display: none;">Kata sandi salah! Silakan coba lagi.</div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg" style="padding: 10px 20px; font-size: 1rem;">
+          🔓 Buka Kunci Sesi
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- AUDIO AUTOPLAY UNLOCK MODAL -->
+  <div class="audio-unlock-overlay" id="audio-unlock-overlay" style="display: none;">
+    <div class="audio-unlock-card">
+      <div class="unlock-icon-circle">
+        <span class="svg-icon" style="width:36px;height:36px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path><path d="M4 4l2 2"></path><path d="M20 4l-2 2"></path></svg>
+        </span>
+      </div>
+      <h2 class="unlock-title">Aktifkan Suara Bel Sekolah</h2>
+      <p class="unlock-desc">
+        Peramban (browser) membutuhkan 1 kali izin interaksi klik agar sistem bel dapat memutar audio lonceng secara otomatis tepat waktu.
+      </p>
+      <button class="btn btn-primary btn-block btn-lg" id="btn-unlock-audio" style="padding: 12px 20px; font-size: 1rem;">
+        🔔 Klik di Sini untuk Mengaktifkan Suara Bel
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL CADANGAN (BACKUP & RESTORE) -->
+  <div class="modal-overlay" id="modal-backup-restore" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Cadangkan & Pulihkan Data Sistem Bel</h3>
+        <button class="btn-close" onclick="App.closeBackupModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="text-muted mb-3">
+          Seluruh jadwal bel, instrumen audio yang diunggah, dan pengaturan sistem dapat disimpan ke file cadangan (.json) untuk disimpan di Flashdisk atau dipindahkan ke komputer lain.
+        </p>
+        
+        <div class="card mb-3" style="background: #f8fafc;">
+          <h4 style="font-size:0.95rem;margin-bottom:6px;">1. Unduh Cadangan Data (Backup)</h4>
+          <p class="text-muted small mb-2">Simpan seluruh jadwal dan instrumen suara ke dalam berkas cadangan di komputer Anda.</p>
+          <button class="btn btn-secondary btn-sm" onclick="App.downloadBackup()">
+            <span class="svg-icon" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></span>
+            Unduh Berkas Cadangan (.JSON)
+          </button>
+        </div>
+
+        <div class="card" style="background: #f8fafc;">
+          <h4 style="font-size:0.95rem;margin-bottom:6px;">2. Pulihkan Data dari Cadangan (Restore)</h4>
+          <p class="text-muted small mb-2">Pilih file cadangan (.json) yang telah disimpan sebelumnya untuk memulihkan jadwal & instrumen.</p>
+          <input type="file" id="restore-file-input" accept=".json" style="display: none;" onchange="App.onRestoreFileSelected(this)">
+          <button class="btn btn-outline-primary btn-sm" onclick="document.getElementById('restore-file-input').click()">
+            <span class="svg-icon" style="width:14px;height:14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg></span>
+            Pilih Berkas Cadangan untuk Dipulihkan
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="App.closeBackupModal()">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL GANTI KATA SANDI (DENGAN VERIFIKASI SANDI SAAT INI) -->
+  <div class="modal-overlay" id="modal-change-password" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Ganti Kata Sandi Kunci Layar</h3>
+        <button class="btn-close" onclick="App.closeChangePasswordModal()">&times;</button>
+      </div>
+      <form id="form-change-password" onsubmit="App.onChangePasswordSubmit(event)">
+        <div class="modal-body">
+          <p class="text-muted small mb-3">
+            Masukkan kata sandi saat ini untuk verifikasi keamanan, lalu buat kata sandi baru.
+          </p>
+
+          <div class="form-group mb-3">
+            <label for="pwd-current" class="form-label">Kata Sandi Saat Ini <span class="text-danger">*</span></label>
+            <input type="password" id="pwd-current" class="form-control" placeholder="Masukkan kata sandi saat ini..." required autocomplete="current-password">
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="pwd-new" class="form-label">Kata Sandi Baru <span class="text-danger">*</span></label>
+            <input type="password" id="pwd-new" class="form-control" placeholder="Masukkan kata sandi baru (min. 4 karakter)..." required autocomplete="new-password">
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="pwd-confirm" class="form-label">Konfirmasi Kata Sandi Baru <span class="text-danger">*</span></label>
+            <input type="password" id="pwd-confirm" class="form-control" placeholder="Ulangi kata sandi baru..." required autocomplete="new-password">
+          </div>
+
+          <div id="pwd-change-msg" class="alert text-sm mt-2" style="display: none;"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="App.closeChangePasswordModal()">Batal</button>
+          <button type="submit" class="btn btn-primary" id="btn-save-pwd">
+            Simpan Kata Sandi
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- SCRIPTS LOADING (ZERO EXTERNAL DEPENDENCY) -->
+  <script src="assets/icons.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/audio-manager.js"></script>
+  <script src="js/scheduler.js"></script>
+  <script src="js/views/dashboard.js"></script>
+  <script src="js/views/schedules.js"></script>
+  <script src="js/views/manual.js"></script>
+  <script src="js/views/reduction.js"></script>
+  <script src="js/views/instruments.js"></script>
+  <script src="js/views/history.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
